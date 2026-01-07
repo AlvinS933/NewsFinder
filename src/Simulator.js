@@ -29,6 +29,7 @@ const Simulator = () => {
         setArticleText("");
         setUrl("");
         setDate("");
+        setContextText("");
     }
 
     const handleSubmit = (e) => {
