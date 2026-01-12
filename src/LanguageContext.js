@@ -91,7 +91,12 @@ const translations = {
     simulationControls: "Simulation Controls",
     next: "Next →",
     previous: "← Previous",
-    steps: "Steps"
+    steps: "Steps",
+
+    //news details
+    back: "Go Back",
+    delete: "delete"
+
   },
   zh: {
     // Navbar
@@ -182,7 +187,11 @@ const translations = {
     simulationControls: "模擬控制",
     next: "下一步 →",
     previous: "← 上一步",
-    steps: "Steps"
+    steps: "Steps",
+
+    //news details
+    back: "返回",
+    delete: "刪除"
   }
 };
 
