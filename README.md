@@ -8,7 +8,7 @@ A full-stack news aggregation and blogging platform built with React, Flask, and
 - **AI-Powered Classification**: Uses OpenAI's GPT-3.5 to automatically categorize articles
 - **Full Article Scraping**: Extracts complete article text using newspaper3k
 - **Category Navigation**: Browse articles by topic (Politics, Economy, Technology, Health, Entertainment, etc.)
-- **Agentic Simulator**: Analyze articles with AI-powered insights
+- **Agentic Simulator (Future feature)**: Analyze articles with AI-powered insights
 - **CRUD Operations**: Create, read, update, and delete blog posts
 - **Responsive Design**: Modern, gradient-based UI with smooth animations
 
