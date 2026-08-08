@@ -43,7 +43,6 @@ A full-stack news aggregation and blogging platform built with React, Flask, and
 
 ```bash
 git clone <your-repository-url>
-cd news-blog
 ```
 
 ### 2. Frontend Setup
