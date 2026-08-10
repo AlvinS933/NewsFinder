@@ -42,7 +42,6 @@ const translations = {
     // Blog Details
     sourceFrom: "Source from:",
     link: "Link:",
-    delete: "delete",
     category: "Category:",
     
     // Not Found
@@ -95,7 +94,12 @@ const translations = {
 
     //news details
     back: "Go Back",
-    delete: "delete"
+    delete: "delete",
+    readOriginal: "Read original",
+    minRead: "min read",
+    international: "International",
+    sports: "Sports",
+    crime: "Crime"
 
   },
   zh: {
@@ -137,7 +141,6 @@ const translations = {
     // Blog Details
     sourceFrom: "來源：",
     link: "連結：",
-    delete: "刪除",
     category: "分類：",
     
     // Not Found
@@ -191,7 +194,12 @@ const translations = {
 
     //news details
     back: "返回",
-    delete: "刪除"
+    delete: "刪除",
+    readOriginal: "閱讀原文",
+    minRead: "分鐘閱讀",
+    international: "國際",
+    sports: "體育",
+    crime: "犯罪"
   }
 };
 

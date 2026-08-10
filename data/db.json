@@ -380,5 +380,6 @@
       "link": "https://www.channelnewsasia.com/world/trump-says-us-will-sell-f-35-stealth-jets-saudi-arabia-5473486",
       "date": "2025-11-18"
     }
-  ]
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }
