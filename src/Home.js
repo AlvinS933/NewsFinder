@@ -1,12 +1,13 @@
 import NewsList from './NewsList';
 import useFetch from './useFetch';
 import { useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { useLanguage } from './LanguageContext';
 
 const Home = () => {
     const { t } = useLanguage();
     const {data:blogs, isPending, error} = useFetch('http://localhost:8000/blogs');
-    
+    const [searchTerm, setSearchTerm] = useState('');
     const allNewsRef = useRef(null);
     const politicsRef = useRef(null);
     const economyRef = useRef(null);
@@ -15,6 +16,7 @@ const Home = () => {
     const entertainmentRef = useRef(null);
     const environmentRef = useRef(null);
     const educationRef = useRef(null);
+    const searchResultsRef = useRef(null);
     const offset = 100;
     const scrollToSection = (ref) => {
         ref.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -30,13 +32,27 @@ const Home = () => {
         { name: t('environment'), ref: environmentRef, filter: 'environment' },
         { name: t('education'), ref: educationRef, filter: 'education' }
     ];
-
+    const trimmedSearch = searchTerm.trim();
+    const isSearching = trimmedSearch.length > 0;
+    const searchResults = blogs ? blogs.filter((blog) => blog.title.toLowerCase().includes(trimmedSearch.toLowerCase())) : [];
+    // Auto-scroll to the search results section the moment a search becomes active.
+    useEffect(() => {
+        if (isSearching) {
+            // wait a tick so the section has mounted/expanded before scrolling
+            const id = setTimeout(() => scrollToSection(searchResultsRef), 50);
+            return () => clearTimeout(id);
+        }
+    }, [isSearching]);
     return ( 
         <div className="home-container">
             <div className ="sidebar" >
                 <div className = "search-container">
                     <p>Search</p>
-                    <input placeholder={'Search title...'} />
+                    <input placeholder={'Search title...'} value = {searchTerm} onChange={(e) => setSearchTerm(e.target.value)} onKeyDown = {(e) => {
+                        if (e.key === 'Enter' && isSearching) {
+                            scrollToSection(searchResultsRef);
+                        }
+                    }}/>
                 </div>
                 <div className="category-nav">
                     <h3>{t('categories')}</h3>
@@ -54,7 +70,17 @@ const Home = () => {
             <div className="home">
                 {error && <div>{error}</div>}
                 {isPending && <div>{t('loading')}</div>}
-                
+                {/* Search Results Section */}
+                {isSearching && (
+                    <div ref={searchResultsRef} style={{scrollMarginTop: `${offset}px`}}>
+                        {searchResults.length > 0 ? (
+                            <NewsList blogs={searchResults} title={t('searchResults')} />
+                        ) : (
+                            <p>{t('noSearchResults')}</p>
+                        )}
+                    </div>
+                )}
+                {/* Category Sections */}
                 <div ref={allNewsRef} style={{scrollMarginTop: `${offset}px`}}>
                     {blogs && <NewsList blogs={blogs} title={t('allNews') + ":"} />}
                 </div>

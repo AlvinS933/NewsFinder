@@ -29,6 +29,8 @@ const translations = {
     entertainmentNews: "Entertainment News",
     environmentNews: "Environment News",
     educationNews: "Education News",
+    searchResults: "Search Results",
+    noSearchResults: "No articles found matching your search.",
     
     // Create page
     addMoreNews: "Add More News/Articles",
@@ -128,6 +130,8 @@ const translations = {
     entertainmentNews: "娛樂新聞",
     environmentNews: "環境新聞",
     educationNews: "教育新聞",
+    searchResults: "搜尋結果",
+    noSearchResults: "找不到符合的文章。",
     
     // Create page
     addMoreNews: "新增更多新聞/文章",
