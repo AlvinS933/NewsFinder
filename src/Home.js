@@ -33,19 +33,24 @@ const Home = () => {
 
     return ( 
         <div className="home-container">
-            <div className="category-nav">
-                <h3>{t('categories')}</h3>
-                {categories.map((category) => (
-                    <button
-                        key={category.name}
-                        onClick={() => scrollToSection(category.ref)}
-                        className="category-button"
-                    >
-                        {category.name}
-                    </button>
-                ))}
+            <div className ="sidebar" >
+                <div className = "search-container">
+                    <p>Search</p>
+                    <input placeholder={'Search title...'} />
+                </div>
+                <div className="category-nav">
+                    <h3>{t('categories')}</h3>
+                    {categories.map((category) => (
+                        <button
+                            key={category.name}
+                            onClick={() => scrollToSection(category.ref)}
+                            className="category-button"
+                        >
+                            {category.name}
+                        </button>
+                    ))}
+                </div>
             </div>
-            
             <div className="home">
                 {error && <div>{error}</div>}
                 {isPending && <div>{t('loading')}</div>}
