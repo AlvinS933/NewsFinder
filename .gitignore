@@ -11,6 +11,11 @@
 # production
 /build
 
+# secrets — never commit real keys
+.env
+.env.*
+!.env.example
+
 # misc
 .DS_Store
 .env.local

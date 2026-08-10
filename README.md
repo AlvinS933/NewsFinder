@@ -54,17 +54,31 @@ npm install
 ### 3. Backend Setup
 
 ```bash
-pip install flask flask-cors requests newspaper3k beautifulsoup4 openai
+pip install flask flask-cors requests newspaper3k beautifulsoup4 openai python-dotenv
 ```
 
 ### 4. Configure API Keys
 
-Edit `news_api_server.py` and replace the API keys:
+Keys are read from environment variables — **never** paste them into a source file.
 
-```python
-NEWSAPI_KEY = 'your_newsapi_key_here'
-OPENAI_API_KEY = 'your_openai_key_here'
+```bash
+cp .env.example .env
 ```
+
+Then edit `.env` and fill in your keys:
+
+```
+NEWSAPI_KEY=your_newsapi_key_here
+OPENAI_API_KEY=your_openai_key_here
+```
+
+`.env` is listed in `.gitignore`, so it is never committed. `.env.example` is
+committed and documents the required variables without containing any values.
+The Flask server refuses to start with a clear error if either key is missing.
+
+> These keys are used **only** by the Flask backend. Never put a secret in a
+> `REACT_APP_*` variable — Create React App inlines those into the JavaScript
+> bundle that ships to every visitor's browser.
 
 ## Running the Application
 

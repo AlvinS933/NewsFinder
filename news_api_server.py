@@ -5,17 +5,36 @@ from datetime import datetime, timedelta
 import time
 import re
 from newspaper import Article
-from bs4 import BeautifulSoup
 import os
 from openai import OpenAI
+
+try:
+    from dotenv import load_dotenv
+    load_dotenv()  # loads .env from the project root; .env is git-ignored
+except ImportError:
+    pass  # no python-dotenv installed — fall back to real shell env vars
 
 app = Flask(__name__)
 CORS(app)  # Enable CORS for React frontend
 
-# NewsAPI Configuration
-NEWSAPI_KEY = ''
-JSON_SERVER_URL = 'http://localhost:8000/blogs'
+# Secrets are read from the environment only. Never hard-code a key here:
+# this file is committed, and anything in it ends up on GitHub forever.
+NEWSAPI_KEY = os.getenv('NEWSAPI_KEY', '')
 OPENAI_API_KEY = os.getenv('OPENAI_API_KEY', '')
+JSON_SERVER_URL = os.getenv('JSON_SERVER_URL', 'http://localhost:8000/blogs')
+
+_missing = [name for name, value in (
+    ('NEWSAPI_KEY', NEWSAPI_KEY),
+    ('OPENAI_API_KEY', OPENAI_API_KEY),
+) if not value]
+
+if _missing:
+    raise SystemExit(
+        f"Missing required environment variable(s): {', '.join(_missing)}\n"
+        "Fix: cp .env.example .env, fill in your keys, then\n"
+        "     pip install python-dotenv\n"
+        "Or export them in your shell instead."
+    )
 
 # Initialize OpenAI client
 client = OpenAI(api_key=OPENAI_API_KEY)
