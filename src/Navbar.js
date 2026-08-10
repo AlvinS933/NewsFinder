@@ -11,16 +11,8 @@ const Navbar = () => {
                 
                 <Link to="/">{t('home')}</Link>
                 <Link to="/simulator">{t('agenticSimulator')}</Link>
-                <Link to="/create" style={{
-                    background: "linear-gradient(135deg, #0077B6 0%, #00B4D8 100%)",//"linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%)",
-                    color: "white",
-                    borderRadius: "8px"
-                }}>{t('newPost')}</Link>
-                <Link to="/search" style={{
-                    color: "white",
-                    background: "linear-gradient(135deg, #0077B6 0%, #00B4D8 100%)",//"linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%)",
-                    borderRadius: "8px"
-                }}>{t('searchAdd')}</Link>
+                <Link to="/create" className = "language-toggle-btn">{t('newPost')}</Link>
+                <Link to="/search" className = "language-toggle-btn">{t('searchAdd')}</Link>
                 <button 
                     onClick={toggleLanguage}
                     className="language-toggle-btn"
