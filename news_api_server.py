@@ -316,4 +316,4 @@ if __name__ == '__main__':
     print("Using newspaper3k library for full article scraping")
     print("Make sure you have installed: pip install newspaper3k lxml_html_clean openai")
     print("Make sure JSON server is running on http://localhost:8000")
-    app.run(debug=True, port=5000)
+    app.run(debug=True, port=5001)

@@ -102,7 +102,7 @@ npx json-server --watch data/output.json --port 8001
 python news_api_server.py
 ```
 
-The Flask server will run on `http://localhost:5000`
+The Flask server will run on `http://localhost:5001`
 
 ### 4. Start React Frontend
 
@@ -138,7 +138,7 @@ news-blog/
 
 ## API Endpoints
 
-### Flask Backend (`http://localhost:5000`)
+### Flask Backend (`http://localhost:5001`)
 
 - `POST /api/search-news` - Search and add news articles
   ```json
@@ -215,7 +215,7 @@ The application features a modern dark theme with:
 ## Troubleshooting
 
 ### Port conflicts
-If ports 3000, 5000, 8000, or 8001 are in use, modify the port numbers in the respective configuration files.
+If ports 3000, 5001, 8000, or 8001 are in use, modify the port numbers in the respective configuration files.
 
 ### CORS errors
 Ensure Flask-CORS is properly installed and configured in `news_api_server.py`.

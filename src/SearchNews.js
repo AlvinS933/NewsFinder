@@ -20,7 +20,7 @@ const SearchNews = () => {
         setError('');
 
         try {
-            const response = await fetch('http://localhost:5000/api/search-news', {
+            const response = await fetch('http://localhost:5001/api/search-news', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
